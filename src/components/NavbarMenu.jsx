@@ -8,7 +8,7 @@ import CartWidget from "./CartWidget";
 
 function NavbarMenu() {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" className="fondo">
       <Container>
         <Navbar.Brand href="#home" className="logo">
           <img src={logo} alt="logo" />
@@ -23,7 +23,6 @@ function NavbarMenu() {
                 Simuladores
               </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Menu</NavDropdown.Item>
-              <NavDropdown.Divider />
             </NavDropdown>
           </Nav>
           <CartWidget />
