@@ -52,3 +52,13 @@ export const getProducts = ()=> {
 		}, 2000);
 	})
 }
+
+export const getOneProducts = (id) =>{
+	return new Promise ((resolve) =>{
+		setTimeout(()=> {
+			let product= productos.find((item)=>item.id === id)
+			resolve(product)
+		}, 2000)
+	}
+)
+}

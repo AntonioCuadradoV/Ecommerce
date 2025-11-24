@@ -12,7 +12,6 @@ const ItemListContainer = ({mensaje}) => {
 		.catch((error) => console.log(error))
 	},[])
 
-	console.log('soy', data)
 	return(
 		<div>
 			<h1>{mensaje}</h1>
