@@ -18,10 +18,7 @@ function NavbarMenu() {
           <Nav className="me-auto">
             <Nav.Link href="#home">Cafes</Nav.Link>
             <NavDropdown title="Productos" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1"></NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Simuladores
-              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">Desayunos</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Menu</NavDropdown.Item>
             </NavDropdown>
           </Nav>
