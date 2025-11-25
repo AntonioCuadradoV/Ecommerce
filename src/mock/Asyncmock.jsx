@@ -1,39 +1,39 @@
 const productos = [
 	{
 		id: '01',
-		name: 'Cafe 1',
+		name: 'Cafe',
 		description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum, eos iure! Ad qui',
 		stock: 20,
-		price: 7000,
-		category: 'menu',
+		price: 3000,
+		category: 'cafe',
 		img: 'https://i.postimg.cc/mr5dWVG3/cafe.webp'
 	},
 	{
 		id: '02',
-		name: 'Cafe 2',
+		name: 'Tostado',
 		description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum, eos iure! Ad qui',
 		stock: 20,
-		price: 7000,
+		price: 5000,
 		category: 'menu',
-		img: 'https://i.postimg.cc/mr5dWVG3/cafe.webp'
+		img: 'https://i.postimg.cc/dQWqwf9y/tostado-x1x-1-crop1650396779193-1.jpg'
 	},
 	{
 		id: '03',
-		name: 'Cafe 3',
+		name: 'Desayuno simple',
 		description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum, eos iure! Ad qui',
 		stock: 20,
 		price: 7000,
 		category: 'desayunos',
-		img: 'https://i.postimg.cc/mr5dWVG3/cafe.webp'
+		img: 'https://i.postimg.cc/yYYkT9LZ/d9fdc25846afab2bbc8b603d8c9b7798-1.jpg'
 	},
 	{
 		id: '04',
-		name: 'Cafe 4',
+		name: 'Desayuno Completo',
 		description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum, eos iure! Ad qui',
 		stock: 20,
-		price: 7000,
+		price: 10000,
 		category: 'desayunos',
-		img: 'https://i.postimg.cc/mr5dWVG3/cafe.webp'
+		img: 'https://i.postimg.cc/ZKMKFQBK/paginaoia2-1.jpg'
 	}
 
 	
