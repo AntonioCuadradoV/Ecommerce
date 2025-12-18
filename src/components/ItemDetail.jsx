@@ -1,15 +1,29 @@
 import React from "react"
 import ItemCount from "./ItemCount"
+import { useContext, useState } from "react"
+import { CartContext } from "../context/CartContext"
+import { Link } from 'react-router-dom'
 
 const ItemDetail = ({detalle}) => {
+	const [purchase, setPurchase]= useState(false)
+	const {addItem, itemQuantity} =useContext(CartContext)
+	const onAdd =(cantidad)=> {
+		addItem(detalle, cantidad)
+		setPurchase(true)
+	}
+	const stockActualizado = detalle.stock - itemQuantity(detalle.id)
   return (
 	<div>
 		<h2>Descripcion del producto: {detalle.name}</h2>
 		<img src={detalle.img} alt={detalle.name} />
 		<p>$ {detalle.price}</p>
 		<p>{detalle.description}</p>
-		<p>Stock Disponible: {detalle.stock} unidades</p>
-		<ItemCount stock={detalle.stock}/>
+		<p>Stock Disponible: {stockActualizado} unidades</p>
+		{
+		purchase 
+       ? <Link className='btn btn-dark' to='/cart'>Ir al carrito</Link> 
+       : <ItemCount stock={stockActualizado} onAdd={onAdd}/> 
+		}
 	</div>
   )
 }
