@@ -1,0 +1,17 @@
+.ContainerDetailItem{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.ContainerDetailItem img{
+	width: auto;
+	height: 200px;
+	margin-top: 5%;
+}
+
+.ContainerDetailItem p{
+	margin-top: 3%;
+}
+

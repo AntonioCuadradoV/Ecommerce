@@ -1,33 +1,69 @@
-import React, { useContext } from 'react'
-import { CartContext } from '../context/CartContext'
+import React, { useContext } from "react";
+import { CartContext } from "../context/CartContext";
+import { Container, Row, Col, Button, Card } from "react-bootstrap";
+import "../CSS/CartView.css";
 
 const CartView = () => {
-    const {cart, removeItem, clear}= useContext(CartContext)
-  return (
-    <div>
-        <h1>Tu carrito 🛒</h1>
-        <div>
-            {
-                cart.map((compra)=> (
-                    <div key={compra.id}>
-                        <img src={compra.img} alt={compra.name}/>
-                        <span>{compra.name}</span>
-                        <span>${compra.price}</span>
-                        <span>cantidad:{compra.quantity}</span>
-                        <span>precio final: ${compra.quantity * compra.price}</span>
-                        <button className='btn btn-danger' onClick={()=> removeItem(compra.id)}>X</button>
-                    </div>
-                ))
-            }
-        </div>
-        {/* crear una funcion que recorra todo el array y de un solo resultado */}
-        <span>Total a pagar: </span>
-        <div>
-            <button className='btn btn-danger' onClick={clear}>Vaciar carrito</button>
-            <button className='btn btn-success'>Terminar Compra</button>
-        </div>
-    </div>
-  )
-}
+  const { cart, removeItem, clear } = useContext(CartContext);
 
-export default CartView
+  const total = cart.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
+
+  return (
+    <Container className="cart-container">
+      <Row>
+        {/* LISTA DE PRODUCTOS */}
+        <Col md={8}>
+          {cart.map((compra) => (
+            <Card className="cart-item" key={compra.id}>
+              <Row className="align-items-center">
+                <Col xs={6} md={5}>
+                  <img src={compra.img} alt={compra.name} className="cart-img"/>
+                </Col>
+
+                <Col xs={4} md={5}>
+                  <p className="cart-name">{compra.name}</p>
+                  <p className="cart-info">Cantidad: {compra.quantity}</p>
+                  <p className="cart-info">Precio: ${compra.price}</p>
+                </Col>
+
+                <Col xs={2} md={2} className="text-end">
+                  <p className="cart-price">
+                    ${compra.price * compra.quantity}
+                  </p>
+                  <Button
+                    variant="danger"
+                    size="sm"
+                    onClick={() => removeItem(compra.id)}
+                  >
+                    ✕
+                  </Button>
+                </Col>
+              </Row>
+            </Card>
+          ))}
+        </Col>
+
+        {/* RESUMEN */}
+        <Col md={4}>
+          <Card className="cart-summary">
+            <h4>Total: ${total}</h4>
+
+            <div className="cart-actions">
+              <Button variant="danger" onClick={clear} className="w-100 mb-2">
+                Vaciar carrito
+              </Button>
+              <Button variant="success" className="w-100">
+                Terminar compra
+              </Button>
+            </div>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
+  );
+};
+
+export default CartView;

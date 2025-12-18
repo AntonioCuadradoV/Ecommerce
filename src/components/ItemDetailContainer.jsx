@@ -4,6 +4,7 @@ import { getOneProducts } from "../mock/Asyncmock"
 import { useParams } from "react-router-dom"
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
+import "../CSS/ContainerDetailItem.css"
 
 const ItemDetailContainer = () => {
 	const [detalle, setDetalle] = useState(null)
@@ -28,7 +29,7 @@ const ItemDetailContainer = () => {
   }
 
   return (
-	<div>
+	<div className="ContainerDetailItem">
 		<ItemDetail detalle={detalle}/>
 		
 	</div>

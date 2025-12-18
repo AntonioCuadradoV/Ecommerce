@@ -11,8 +11,8 @@ function NavbarMenu() {
   return (
     <Navbar expand="lg" className="fondo">
       <Container>
-        <Navbar.Brand as={NavLink} to='/' className="logo">
-          <img src={logo} alt="logo" />
+        <Navbar.Brand as={NavLink} to='/' >
+          <img className="logo" src={logo} alt="logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
