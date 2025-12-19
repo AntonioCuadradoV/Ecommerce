@@ -4,7 +4,7 @@ import { productos } from "../mock/Asyncmock"
 import ItemList from "./ItemList"
 import { useParams } from 'react-router-dom'
 import { collection, getDocs, query, where, addDoc } from 'firebase/firestore'
-import { db } from '../service/firebase'
+import { db } from '../service/firebase.jsx'
 
 const ItemListContainer = ({ mensaje }) => {
   const [data, setData] = useState([])
@@ -34,7 +34,7 @@ const ItemListContainer = ({ mensaje }) => {
   return (
     <div>
 		
-      <h1>{mensaje}</h1>
+      <h1 className='TituloPrincipal'>{mensaje}</h1>
       {error ? <p>{error}</p> : <ItemList data={data} />}
     </div>
   )

@@ -1,0 +1,11 @@
+.item-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.item-wrapper {
+  width: 18rem;   /* mismo ancho que la Card */
+  display: flex;
+}

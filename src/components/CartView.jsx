@@ -10,7 +10,6 @@ const CartView = () => {
   return (
     <Container className="cart-container">
       <Row>
-        {/* LISTA DE PRODUCTOS */}
         <Col md={8}>
           {cart.map((compra) => (
             <Card className="cart-item" key={compra.id}>

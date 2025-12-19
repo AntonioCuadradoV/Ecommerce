@@ -4,13 +4,15 @@ import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { db } from '../service/firebase';
 import { Link } from 'react-router-dom';
 import EmptyCart from './EmptyCart';
-import '../CSS/Checkout.css'
+import Error from './Error';
+import '../CSS/Checkout.css';
 
 const Checkout = () => {
   const [buyer, setBuyer] = useState({});
   const [validMail, setValidMail] = useState('');
   const [orderId, setOrderId] = useState(null);
-  const [error, setError] = useState(null);
+  const [formError, setFormError] = useState(null);   // 👈 errores de formulario
+  const [orderError, setOrderError] = useState(false); // 👈 error crítico
   const [process, setProcess] = useState(false);
 
   const { cart, clear, total } = useContext(CartContext);
@@ -26,16 +28,16 @@ const Checkout = () => {
     e.preventDefault();
 
     if (!buyer.name || !buyer.lastname || !buyer.email || !validMail) {
-      setError('Por favor complete todos los campos');
+      setFormError('Por favor complete todos los campos');
       return;
     }
 
     if (buyer.email !== validMail) {
-      setError('Los correos no coinciden');
+      setFormError('Los correos no coinciden');
       return;
     }
 
-    setError(null);
+    setFormError(null);
     setProcess(true);
 
     const orden = {
@@ -52,12 +54,19 @@ const Checkout = () => {
         setOrderId(res.id);
         clear();
       })
-      .catch((error) => console.log(error))
+      .catch((error) => {
+        console.error(error);
+        setOrderError(true); // 👈 error grave
+      })
       .finally(() => setProcess(false));
   };
 
   if (!cart.length && !orderId) {
     return <EmptyCart />;
+  }
+
+  if (orderError) {
+    return <Error />;
   }
 
   return (
@@ -75,9 +84,9 @@ const Checkout = () => {
         <div className="checkout-card">
           <h1 className="checkout-title">Complete sus datos</h1>
 
-          {error && (
+          {formError && (
             <div className="alert alert-danger text-center">
-              {error}
+              {formError}
             </div>
           )}
 
