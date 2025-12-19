@@ -4,7 +4,7 @@ Este proyecto fue realizado como parte del curso de React en Coderhouse, con el 
 
 La aplicación simula un e-commerce, permitiendo navegar productos, ver detalles, agregar al carrito y finalizar una compra utilizando Firebase como base de datos.
 
-
+![PaginaEcommerce](/public/view-pagina)
 
 ### 🚀 Instalación
 
