@@ -5,12 +5,12 @@ import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 
 const CartWidget = () =>{
-	const carrito = useContext(CartContext)
+	const {cartQuantity, cart} = useContext(CartContext)
 
 	return(
 		<div>
 			<FaCartShopping className="carrito"/>
-			<Badge bg="dark">3</Badge>
+			{cart.length > 0 && <Badge bg="dark">{cartQuantity()}</Badge>}
 		</div>
 	)
 }

@@ -1,24 +1,38 @@
-import React from "react"
-
-import {Button, Card} from 'react-bootstrap';
+import React from "react";
+import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-
-const Item = ({prod}) => {
+const Item = ({ prod }) => {
   return (
-	<Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={prod.img} />
-      <Card.Body>
-        <Card.Title>{prod.name}</Card.Title>
-        <Card.Text>
+    <Card className="h-100">
+      <Card.Img
+        variant="top"
+        src={prod.img}
+        alt={prod.name}
+        style={{
+          height: "180px",
+          objectFit: "contain",
+          padding: "10px"
+        }}
+      />
+
+      <Card.Body className="d-flex flex-column">
+        <Card.Title style={{ minHeight: "60px" }}>
+          {prod.name}
+        </Card.Title>
+
+        <Card.Text className="fw-bold">
           ${prod.price}
         </Card.Text>
-        <Link to={`/item/${prod.id}`}><Button variant="primary">Ver mas</Button></Link>
-        
+
+        <Link to={`/item/${prod.id}`} className="mt-auto">
+          <Button variant="primary" className="w-100">
+            Ver más
+          </Button>
+        </Link>
       </Card.Body>
     </Card>
-	)
-}
-export default Item
+  );
+};
 
-
+export default Item;

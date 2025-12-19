@@ -19,9 +19,10 @@ function NavbarMenu() {
           <Nav className="me-auto">
             <Nav.Link as={NavLink} to='/'>Home</Nav.Link>
             <NavDropdown title="Productos" id="basic-nav-dropdown">
-              <NavDropdown.Item as={NavLink} to='/category/desayunos'>Desayunos</NavDropdown.Item>
-              <NavDropdown.Item as={NavLink} to='/category/menu'>Menu</NavDropdown.Item>
-              <NavDropdown.Item as={NavLink} to='/category/cafe'>Cafes</NavDropdown.Item>
+              <NavDropdown.Item as={NavLink} to='/category/combos'>Combos</NavDropdown.Item>
+              <NavDropdown.Item as={NavLink} to='/category/monitores'>Monitores</NavDropdown.Item>
+              <NavDropdown.Item as={NavLink} to='/category/jostycks'>Jostyck</NavDropdown.Item>
+              <NavDropdown.Item as={NavLink} to='/category/volantes'>Volantes</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <CartWidget />

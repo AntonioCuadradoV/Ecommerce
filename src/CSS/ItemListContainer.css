@@ -1,4 +1,19 @@
-h1{
-	text-align: center;
-	padding-top: 2rem;
+.item-card {
+  height: 100%;
+}
+
+.img-item {
+  height: 180px;
+  object-fit: contain; 
+  padding: 10px;
+}
+
+.item-title {
+  min-height: 60px;
+  font-size: 1rem;
+}
+
+.item-price {
+  font-weight: bold;
+  margin-bottom: 10px;
 }

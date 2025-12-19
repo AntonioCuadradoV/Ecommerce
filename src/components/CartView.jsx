@@ -2,14 +2,10 @@ import React, { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import "../CSS/CartView.css";
+import { Link } from "react-router-dom";
 
 const CartView = () => {
-  const { cart, removeItem, clear } = useContext(CartContext);
-
-  const total = cart.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
+  const { cart, removeItem, clear, total } = useContext(CartContext);
 
   return (
     <Container className="cart-container">
@@ -49,15 +45,17 @@ const CartView = () => {
         {/* RESUMEN */}
         <Col md={4}>
           <Card className="cart-summary">
-            <h4>Total: ${total}</h4>
+            <h4>Total: ${total()}</h4>
 
             <div className="cart-actions">
               <Button variant="danger" onClick={clear} className="w-100 mb-2">
                 Vaciar carrito
               </Button>
-              <Button variant="success" className="w-100">
-                Terminar compra
-              </Button>
+              <Link to='/checkout'>
+                <Button variant="success" className="w-100" >
+                  Terminar compra
+                </Button>
+              </Link>
             </div>
           </Card>
         </Col>

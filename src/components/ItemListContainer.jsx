@@ -1,34 +1,43 @@
 import { useEffect, useState } from 'react'
 import '../CSS/ItemListContainer.css'
-import { getProducts } from '../mock/Asyncmock'
+import { productos } from "../mock/Asyncmock"
 import ItemList from "./ItemList"
 import { useParams } from 'react-router-dom'
+import { collection, getDocs, query, where, addDoc } from 'firebase/firestore'
+import { db } from '../service/firebase'
 
-const ItemListContainer = ({mensaje}) => {
-	const [data, setData] = useState([])
-	const {type} = useParams()
-	const [error, setError] = useState(null)
+const ItemListContainer = ({ mensaje }) => {
+  const [data, setData] = useState([])
+  const [error, setError] = useState(null)
+  const { type } = useParams()
 
-	useEffect(()=> {
-		getProducts()
-		.then((res) => {
-			if (type) {
-				setData(res.filter((prod) => prod.category === type))
-			}else{
-				setData(res)
-			}
-		})
-		.catch(() => {
-			setError("Hubo un error al cargar los productos.")
-		})
-	},[type])
 
-	return(
-		<div>
-			<h1>{mensaje}</h1>
-			{error ? <p>{error}</p> : <ItemList data={data} />}
-		</div> 
-	)
+
+ useEffect(()=>{
+        const prodCollection = type ? query(collection(db, "items"), where("category", "==", type)) :collection(db, "items" )
+        
+        getDocs(prodCollection)
+        .then((res)=>{ 
+            const list = res.docs.map((doc)=>{
+
+                return{
+                    id:doc.id,
+                    ...doc.data()
+                }
+            })
+
+            setData(list)
+        })
+        .catch((error)=>console.log(error))
+    },[type])
+
+  return (
+    <div>
+		
+      <h1>{mensaje}</h1>
+      {error ? <p>{error}</p> : <ItemList data={data} />}
+    </div>
+  )
 }
 
 export default ItemListContainer
